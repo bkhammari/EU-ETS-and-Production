@@ -10,79 +10,87 @@
 \usepackage[margin=2cm]{geometry}
 \usepackage{setspace}
 \usepackage{natbib}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage{tikz}
 \usepackage{caption}
-\usepackage{nomencl}
 
 \onehalfspacing
 
 \numberwithin{equation}{section}
 
+\setcounter{tocdepth}{2}
+
 \bibliographystyle{apalike}
+
+\hypersetup{
+  pdftitle={Carbon Leakage through the Back Door? A Proposed Triple-Difference Design for EU ETS Impacts on North African Imports},
+  pdfauthor={Baha Khammari}
+}
 
 \begin{document}
 
 \pagenumbering{Roman}
 
-% ---- Title Page ----
+% Title page
 \begin{titlepage}
 \centering
-\vspace*{2cm}
+\vspace*{2.5cm}
 
-{\Large University of Cologne\\[0.3cm]
-Faculty of Management, Economics and Social Sciences\\[0.3cm]
-Chair in Economics, Energy and Sustainability\\[0.3cm]
-Prof.\ Dr.\ Marc Oliver Bettz\"uge}
+{\large Seminar Paper}
 
-\vspace{2.5cm}
+\vspace{1.5cm}
 
 {\LARGE\bfseries Carbon Leakage through the Back Door?\\[0.4cm]
 A Proposed Triple-Difference Design for\\[0.2cm]
 EU~ETS Impacts on North African Imports}
 
-\vspace{2.5cm}
+\vspace{1.5cm}
 
-{\large Seminar Paper\\[0.3cm]
-Panel Data Methods Seminar\\[0.3cm]
-Summer Term 2026}
+{\large Baha Khammari}
 
-\vspace{2cm}
+\vspace{0.5cm}
 
-{\large
-Baha Khammari\\[0.2cm]
-MSc Economics\\[0.2cm]
-Supervisor: Nada Fadl}
+{\large Panel Data Methods Seminar, MSc Economics}
 
 \vfill
 
-{\large Cologne, August 2026}
+\noindent\rule{\textwidth}{0.4pt}
+
+\vspace{0.4cm}
+
+\begin{flushleft}
+University of Cologne\\
+Faculty of Management, Economics and Social Sciences\\
+Chair in Economics, Energy and Sustainability\\
+Responsible Lecturer: Nada Fadl\\
+Matriculation Number: [matriculation number]\\
+Date: August 2026
+\end{flushleft}
 
 \end{titlepage}
+\setcounter{page}{2}
 
-% ---- Abstract ----
-\newpage
+% Abstract (immediately after the title page; not listed in the table of contents)
 \section*{Abstract}
-\addcontentsline{toc}{section}{Abstract}
 
 The European Union Emissions Trading System (EU~ETS) raises production costs for regulated firms, creating incentives for emission-intensive production to relocate to jurisdictions with weaker carbon pricing. Whether this carbon leakage channel operates through trade flows remains contested: aggregate studies find no measurable effect, yet aggregate estimates may mask corridor-specific leakage into proximate lower-regulation partners. This paper proposes a triple-difference design to estimate the differential semi-elasticity of EU imports of emission-intensive goods from North African partners (Morocco, Algeria, Egypt, Tunisia) with respect to effective EU~ETS carbon costs over 2005 to 2021. The identification strategy exploits variation in product-level carbon-cost exposure, time variation in the effective carbon price attenuated by free allocation, and geographic variation between the North African corridor and a comparison partner group. Product-by-year fixed effects absorb global product-specific shocks; partner-by-year fixed effects absorb macroeconomic and exchange-rate confounds. A positive estimate would indicate that aggregate null results conceal corridor-specific leakage and would sharpen the rationale for the Carbon Border Adjustment Mechanism. A well-identified null in the most leakage-prone corridor would strengthen the interpretation that free allocation has been sufficient to prevent trade diversion.
 
-% ---- Table of Contents ----
+% Table of contents
 \newpage
 \tableofcontents
 
-% ---- List of Figures ----
+% List of figures
 \newpage
 \listoffigures
 \addcontentsline{toc}{section}{List of Figures}
 
-% ---- List of Tables ----
+% List of tables
 \listoftables
 \addcontentsline{toc}{section}{List of Tables}
 
-% ---- List of Abbreviations ----
+% List of abbreviations
 \newpage
 \section*{List of Abbreviations}
 \addcontentsline{toc}{section}{List of Abbreviations}
@@ -91,22 +99,21 @@ The European Union Emissions Trading System (EU~ETS) raises production costs for
 CBAM   & Carbon Border Adjustment Mechanism \\
 CN     & Combined Nomenclature \\
 DiD    & Difference-in-Differences \\
-EEA    & European Economic Area \\
 EU     & European Union \\
 EU~ETS & European Union Emissions Trading System \\
 EUA    & European Union Allowance \\
 FDI    & Foreign Direct Investment \\
+GTAP   & Global Trade Analysis Project \\
 HS     & Harmonised System \\
 MSR    & Market Stability Reserve \\
 NACE   & Nomenclature statistique des activit\'{e}s \'{e}conomiques \\
 NAP    & National Allocation Plan \\
 OLS    & Ordinary Least Squares \\
 PPML   & Poisson Pseudo-Maximum Likelihood \\
-PSM    & Propensity-Score Matching \\
 TFP    & Total Factor Productivity \\
 \end{tabular}
 
-% ---- Switch to Arabic page numbering for main body ----
+% Principal part: Arabic page numbering restarts here
 \newpage
 \pagenumbering{arabic}
 
@@ -117,26 +124,37 @@ TFP    & Total Factor Productivity \\
 \input{sections/contribution}
 \input{sections/conclusion}
 
+% List of references: single spacing, left justification, spacing between entries
 \newpage
+\addcontentsline{toc}{section}{References}
+\begin{spacing}{1.0}
+\setlength{\bibsep}{0.9\baselineskip}
+\raggedright
 \bibliography{refs}
+\end{spacing}
 
-% ---- AI Acknowledgement ----
+% Acknowledgement of AI use
 \newpage
-\section*{Use of AI-Based Tools}
-\addcontentsline{toc}{section}{Use of AI-Based Tools}
+\section*{Acknowledgement of AI Use}
+\addcontentsline{toc}{section}{Acknowledgement of AI Use}
 
-In accordance with Section~5.2 of the Chair's Guide for Academic Writing (October 2025), the author declares the following use of AI-based tools during the preparation of this paper. Claude (Anthropic) was used for the compilation and formatting of bibliography entries. No AI tool was used for the generation of analytical content, the literature review, or the formulation of the empirical design. The author bears full responsibility for all substantive content.
+In accordance with Section~5.2 of the Chair's Guide for Academic Writing (October 2025), the author acknowledges the following supporting use of AI-based tools: Claude (Anthropic) was used for the compilation and formatting of bibliographic entries and for LaTeX typesetting support. The author has reviewed and verified all material and bears full responsibility for the content of this paper.
 
-% ---- Declaration (Eigenst\"andigkeitserkl\"arung) ----
+% Declaration
 \newpage
-\section*{Eigenst\"andigkeitserkl\"arung}
-\addcontentsline{toc}{section}{Eigenst\"andigkeitserkl\"arung}
+\section*{Declaration}
+\addcontentsline{toc}{section}{Declaration}
 
-Hiermit versichere ich, dass ich die vorliegende Arbeit selbstst\"andig und ohne die Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Alle Stellen, die w\"ortlich oder sinngem\"a\ss{} aus ver\"offentlichten und nicht ver\"offentlichten Schriften entnommen sind, sind als solche kenntlich gemacht. Die Arbeit ist in gleicher oder \"ahnlicher Form noch nicht als Pr\"ufungsarbeit eingereicht worden.
+Hiermit versichere ich an Eides statt, dass ich die vorliegende Arbeit selbstst\"andig und ohne die Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Alle Stellen, die w\"ortlich oder sinngem\"a\ss{} aus ver\"offentlichten und nicht ver\"offentlichten fremden Quellen entnommen wurden, einschlie\ss{}lich mittels KI-Tools generierter Inhalte, sind als solche kenntlich gemacht. Die Arbeit ist in gleicher oder \"ahnlicher Form im Rahmen einer anderen Pr\"ufung noch nicht vorgelegt worden. Ich versichere, dass die eingereichte elektronische Fassung der eingereichten Druckfassung vollst\"andig entspricht.
 
-\vspace{3cm}
+Die Strafbarkeit einer falschen eidesstattlichen Versicherung ist mir bekannt, namentlich die Strafandrohung gem\"a\ss{} \S~156 StGB bis zu drei Jahren Freiheitsstrafe oder Geldstrafe bei vors\"atzlicher Begehung der Tat bzw. gem\"a\ss{} \S~161 Abs.~1 StGB bis zu einem Jahr Freiheitsstrafe oder Geldstrafe bei fahrl\"assiger Begehung.
+
+\vspace{2.5cm}
 
 \noindent
-Cologne, \today \hfill Baha Khammari
+Cologne, August 2026 \hfill \rule{6cm}{0.4pt}
+
+\noindent
+\mbox{} \hfill Baha Khammari
 
 \end{document}

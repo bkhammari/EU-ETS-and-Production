@@ -1,6 +1,8 @@
 \section{Proposed Empirical Design}
 \label{sec:design}
 
+This section presents the proposed specifications, defines the treatment variables, describes the sample and data sources, and pairs each identifying assumption with the threat it answers and the specification that would probe it.
+
 \subsection{Specification}
 
 The baseline continuous-treatment difference-in-differences, estimated on the North African sample alone, is:
@@ -18,7 +20,7 @@ where $L_c$ indicates the lower-regulation corridor (Morocco, Algeria, Egypt, Tu
 \subsection{Variable Definitions}
 
 \paragraph{Carbon-cost exposure ($\tau_p$).}
-The CO$_2$ emission intensity of the NACE Rev.~2 sector supplying product $p$, mapped through the RAMON CN-to-NACE correspondence \citep{ramon}, fixed at its 2005--2007 average to prevent endogenous intensity responses. The transparent alternative is a binary CBAM Annex~I indicator \citep{cbam2023}.
+The CO$_2$ emission intensity of the sector supplying product $p$ under the European industrial activity classification NACE Rev.~2, mapped to products through the RAMON correspondence between the Combined Nomenclature (CN) and NACE \citep{ramon}, fixed at its 2005--2007 average to prevent endogenous intensity responses. The transparent alternative is a binary CBAM Annex~I indicator \citep{cbam2023}.
 
 \paragraph{Effective carbon cost ($C_{st}$).}
 \begin{equation}
@@ -31,13 +33,13 @@ where $P_t$ is the annual average EUA price \citep{ember} and $a_{st}$ is the se
 The choice of comparison group determines what $\beta$ identifies. Three candidates merit consideration. Turkey participates in an EU customs union that eliminates industrial tariffs, making it difficult to separate carbon-cost effects from pre-existing preferential-access effects; Turkey has also begun developing its own emissions trading system, introducing partial regulatory convergence within the sample. The Western Balkans (Albania, Bosnia and Herzegovina, Kosovo, Montenegro, North Macedonia, Serbia) share geographic proximity, operate under Stabilisation and Association Agreements with comparable tariff schedules, and lacked carbon-pricing regimes throughout the sample period, offering a cleaner regulatory comparison; their limitation is smaller export volumes in emission-intensive goods, which introduces noise. An intra-EU sourcing benchmark would control for EU consumption shocks but faces EU~ETS regulation by construction, so it cannot serve as a lower-regulation comparator in the standard sense. The proposed design would report results with each group and discuss sensitivity to this choice.
 
 \paragraph{Fixed-effect absorption.}
-In~\eqref{eq:triple}: $\eta_{pt}$ absorbs $\tau_p \times C_{st}$, the product-level effect regardless of partner; $\psi_{ct}$ absorbs $C_{st} \times L_c$ and all partner-level macro and exchange-rate shocks; $\phi_{pc}$ absorbs $\tau_p \times L_c$. Only the triple interaction survives. Identification comes from the differential response of high-exposure products from the lower-regulation corridor, purged of global product-specific shocks and partner-specific conditions.
+In Equation~\ref{eq:triple}, $\eta_{pt}$ absorbs $\tau_p \times C_{st}$, the product-level effect regardless of partner; $\psi_{ct}$ absorbs $C_{st} \times L_c$ and all partner-level macro and exchange-rate shocks; $\phi_{pc}$ absorbs $\tau_p \times L_c$. Only the triple interaction survives. Identification comes from the differential response of high-exposure products from the lower-regulation corridor, purged of global product-specific shocks and partner-specific conditions.
 
 \subsection{Sample and Data}
 
 The sample covers 2005 to 2021, spanning Phase~I through the first year of Phase~IV. Pre-2005 years (2000--2004) are reserved for pre-trend validation; the Directive dates from 2003, so 2000 to 2002 constitutes a clean pre-announcement period and 2003 to 2004 a potential anticipation window. The window ends in 2021 by design: the 2022 energy-price shock, driven by the Russian invasion of Ukraine, distorted both EUA prices and bilateral trade flows in ways unrelated to the leakage channel.
 
-Bilateral trade data at the CN8 level would come from Eurostat Comext (dataset DS-045409; \citealp{comext}), which provides value and quantity by reporting Member State, partner country, product code, and year. Comext coverage of North African partners is comprehensive for goods trade. UN Comtrade at HS6 would serve as a fallback for missing partner-product cells \citep{comtrade}; the coarser classification reduces product-level variation but ensures broader coverage. Sectoral CO$_2$ emission intensities would be computed from Eurostat air emissions accounts, defined as tonnes of CO$_2$ per unit of gross output in the corresponding NACE Rev.~2 sector, and mapped to trade products through the RAMON CN-to-NACE correspondence \citep{ramon}.
+Bilateral trade data at the CN8 level would come from Eurostat Comext (dataset DS-045409; \citealp{comext}), which provides value and quantity by reporting Member State, partner country, product code, and year. Comext coverage of North African partners is comprehensive for goods trade. UN Comtrade data at the six-digit Harmonised System level (HS6) would serve as a fallback for missing partner-product cells \citep{comtrade}; the coarser classification reduces product-level variation but ensures broader coverage. Sectoral CO$_2$ emission intensities would be computed from Eurostat air emissions accounts, defined as tonnes of CO$_2$ per unit of gross output in the corresponding NACE Rev.~2 sector, and mapped to trade products through the RAMON CN-to-NACE correspondence \citep{ramon}.
 
 \subsection{Identifying Assumptions and Threats}
 
@@ -45,7 +47,7 @@ Bilateral trade data at the CN8 level would come from Eurostat Comext (dataset D
 
 \item \textbf{Parallel trends.} Absent the EU~ETS, differential trends in high-exposure imports from the corridor (relative to comparison partners) would match those for low-exposure products. An event-study specification interacting $\tau_p$ with year indicators (base 2004) would inspect 2000--2002 for pre-trends and 2003--2004 for anticipation.
 
-\item \textbf{No confounding product shocks.} Global shocks correlated with emission intensity do not differentially affect the corridor versus comparison partners. $\eta_{pt}$ absorbs all product-by-year variation; a remaining violation would require a shock simultaneously product-specific, intensity-correlated, and corridor-differential. In the baseline~\eqref{eq:baseline}, product-level commodity-price controls partially address this.
+\item \textbf{No confounding product shocks.} Global shocks correlated with emission intensity do not differentially affect the corridor versus comparison partners. $\eta_{pt}$ absorbs all product-by-year variation; a remaining violation would require a shock simultaneously product-specific, intensity-correlated, and corridor-differential. In the baseline Equation~\ref{eq:baseline}, product-level commodity-price controls partially address this.
 
 \item \textbf{Carbon-price exogeneity.} The EUA price, set by EU-wide policy and macro factors, is plausibly exogenous to individual bilateral flows. $\psi_{ct}$ absorbs partner-year variation, so identification comes from within-partner-year, across-product variation.
 
@@ -59,7 +61,7 @@ Bilateral trade data at the CN8 level would come from Eurostat Comext (dataset D
 
 \subsection{Inference and Implementation}
 
-Standard errors would be clustered two-way by product and partner-year \citep{cameron2011}. The small number of partner clusters raises finite-cluster concerns; sector-level clustering and a wild cluster bootstrap would serve as alternatives. The design would be implemented with OLS and high-dimensional fixed effects (\texttt{fixest}; \citealp{berge2021}) and with PPML (\texttt{fepois}) to handle zero trade flows consistently \citep{santos2006}.
+Standard errors would be clustered two-way by product and partner-year \citep{cameron2011}. The small number of partner clusters raises finite-cluster concerns; sector-level clustering and a wild cluster bootstrap would serve as alternatives. The design would be implemented with ordinary least squares (OLS) and high-dimensional fixed effects (\texttt{fixest}; \citealp{berge2021}) and with Poisson pseudo-maximum-likelihood (PPML) estimation (\texttt{fepois}) to handle zero trade flows consistently \citep{santos2006}.
 
 \subsection{Validation}
 
