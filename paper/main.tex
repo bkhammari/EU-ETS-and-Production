@@ -7,7 +7,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
-\usepackage[margin=2.5cm]{geometry}
+\usepackage[margin=2cm]{geometry}
 \usepackage{setspace}
 \usepackage{natbib}
 \usepackage{hyperref}
@@ -15,30 +15,100 @@
 \usepackage{array}
 \usepackage{tikz}
 \usepackage{caption}
+\usepackage{nomencl}
 
 \onehalfspacing
 
-\bibliographystyle{apalike}
+\numberwithin{equation}{section}
 
-\title{Carbon Leakage through the Back Door? A Proposed\\
-Triple-Difference Design for EU~ETS Impacts on\\
-North African Imports}
-\author{Baha Khammari\\
-MSc Economics, University of Cologne\\
-Panel Data Methods Seminar\\
-Supervisor: Nada Fadl}
-\date{August 2026}
+\bibliographystyle{apalike}
 
 \begin{document}
 
-\maketitle
+\pagenumbering{Roman}
 
-\begin{abstract}
-\noindent
-The European Union Emissions Trading System (EU~ETS) raises production costs for regulated firms, creating incentives for emission-intensive production to relocate to jurisdictions with weaker carbon pricing. Whether this carbon leakage channel operates through trade flows remains contested: aggregate studies find no measurable effect, yet aggregate estimates may mask corridor-specific leakage into proximate lower-regulation partners. This paper proposes a triple-difference design to estimate the differential semi-elasticity of EU imports of emission-intensive goods from North African partners (Morocco, Algeria, Egypt, Tunisia) with respect to effective EU~ETS carbon costs over 2005 to 2021. The identification strategy exploits variation in product-level carbon-cost exposure, time variation in the effective carbon price attenuated by free allocation, and geographic variation between the North African corridor and a comparison partner group. Product-by-year fixed effects absorb global product-specific shocks; partner-by-year fixed effects absorb macroeconomic and exchange-rate confounds. A positive estimate would indicate that aggregate null results conceal corridor-specific leakage and would sharpen the rationale for the Carbon Border Adjustment Mechanism. A well-identified null in the most leakage-prone corridor would strengthen the interpretation that free allocation has been sufficient to prevent trade diversion.
-\end{abstract}
+% ---- Title Page ----
+\begin{titlepage}
+\centering
+\vspace*{2cm}
 
+{\Large University of Cologne\\[0.3cm]
+Faculty of Management, Economics and Social Sciences\\[0.3cm]
+Chair in Economics, Energy and Sustainability\\[0.3cm]
+Prof.\ Dr.\ Marc Oliver Bettz\"uge}
+
+\vspace{2.5cm}
+
+{\LARGE\bfseries Carbon Leakage through the Back Door?\\[0.4cm]
+A Proposed Triple-Difference Design for\\[0.2cm]
+EU~ETS Impacts on North African Imports}
+
+\vspace{2.5cm}
+
+{\large Seminar Paper\\[0.3cm]
+Panel Data Methods Seminar\\[0.3cm]
+Summer Term 2026}
+
+\vspace{2cm}
+
+{\large
+Baha Khammari\\[0.2cm]
+MSc Economics\\[0.2cm]
+Supervisor: Nada Fadl}
+
+\vfill
+
+{\large Cologne, August 2026}
+
+\end{titlepage}
+
+% ---- Abstract ----
 \newpage
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+The European Union Emissions Trading System (EU~ETS) raises production costs for regulated firms, creating incentives for emission-intensive production to relocate to jurisdictions with weaker carbon pricing. Whether this carbon leakage channel operates through trade flows remains contested: aggregate studies find no measurable effect, yet aggregate estimates may mask corridor-specific leakage into proximate lower-regulation partners. This paper proposes a triple-difference design to estimate the differential semi-elasticity of EU imports of emission-intensive goods from North African partners (Morocco, Algeria, Egypt, Tunisia) with respect to effective EU~ETS carbon costs over 2005 to 2021. The identification strategy exploits variation in product-level carbon-cost exposure, time variation in the effective carbon price attenuated by free allocation, and geographic variation between the North African corridor and a comparison partner group. Product-by-year fixed effects absorb global product-specific shocks; partner-by-year fixed effects absorb macroeconomic and exchange-rate confounds. A positive estimate would indicate that aggregate null results conceal corridor-specific leakage and would sharpen the rationale for the Carbon Border Adjustment Mechanism. A well-identified null in the most leakage-prone corridor would strengthen the interpretation that free allocation has been sufficient to prevent trade diversion.
+
+% ---- Table of Contents ----
+\newpage
+\tableofcontents
+
+% ---- List of Figures ----
+\newpage
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+
+% ---- List of Tables ----
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+
+% ---- List of Abbreviations ----
+\newpage
+\section*{List of Abbreviations}
+\addcontentsline{toc}{section}{List of Abbreviations}
+
+\begin{tabular}{@{}ll@{}}
+CBAM   & Carbon Border Adjustment Mechanism \\
+CN     & Combined Nomenclature \\
+DiD    & Difference-in-Differences \\
+EEA    & European Economic Area \\
+EU     & European Union \\
+EU~ETS & European Union Emissions Trading System \\
+EUA    & European Union Allowance \\
+FDI    & Foreign Direct Investment \\
+HS     & Harmonised System \\
+MSR    & Market Stability Reserve \\
+NACE   & Nomenclature statistique des activit\'{e}s \'{e}conomiques \\
+NAP    & National Allocation Plan \\
+OLS    & Ordinary Least Squares \\
+PPML   & Poisson Pseudo-Maximum Likelihood \\
+PSM    & Propensity-Score Matching \\
+TFP    & Total Factor Productivity \\
+\end{tabular}
+
+% ---- Switch to Arabic page numbering for main body ----
+\newpage
+\pagenumbering{arabic}
 
 \input{sections/introduction}
 \input{sections/policy_background}
@@ -47,6 +117,26 @@ The European Union Emissions Trading System (EU~ETS) raises production costs for
 \input{sections/contribution}
 \input{sections/conclusion}
 
+\newpage
 \bibliography{refs}
+
+% ---- AI Acknowledgement ----
+\newpage
+\section*{Use of AI-Based Tools}
+\addcontentsline{toc}{section}{Use of AI-Based Tools}
+
+In accordance with Section~5.2 of the Chair's Guide for Academic Writing (October 2025), the author declares the following use of AI-based tools during the preparation of this paper. Claude (Anthropic) was used for the compilation and formatting of bibliography entries. No AI tool was used for the generation of analytical content, the literature review, or the formulation of the empirical design. The author bears full responsibility for all substantive content.
+
+% ---- Declaration (Eigenst\"andigkeitserkl\"arung) ----
+\newpage
+\section*{Eigenst\"andigkeitserkl\"arung}
+\addcontentsline{toc}{section}{Eigenst\"andigkeitserkl\"arung}
+
+Hiermit versichere ich, dass ich die vorliegende Arbeit selbstst\"andig und ohne die Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Alle Stellen, die w\"ortlich oder sinngem\"a\ss{} aus ver\"offentlichten und nicht ver\"offentlichten Schriften entnommen sind, sind als solche kenntlich gemacht. Die Arbeit ist in gleicher oder \"ahnlicher Form noch nicht als Pr\"ufungsarbeit eingereicht worden.
+
+\vspace{3cm}
+
+\noindent
+Cologne, \today \hfill Baha Khammari
 
 \end{document}
