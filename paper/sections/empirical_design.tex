@@ -1,0 +1,66 @@
+\section{Proposed Empirical Design}
+\label{sec:design}
+
+\subsection{Specification}
+
+The baseline continuous-treatment difference-in-differences, estimated on the North African sample alone, is:
+\begin{equation}
+\label{eq:baseline}
+\ln M_{pct} = \beta \, (\tau_p \times C_{st}) + \phi_{pc} + \psi_{ct} + u_{pct},
+\end{equation}
+where $M_{pct}$ is the import value (EUR) of product $p$ from partner $c$ in year $t$; $\tau_p$ is product-level carbon-cost exposure; $C_{st}$ is the effective carbon cost; $\phi_{pc}$ are product-by-partner fixed effects; and $\psi_{ct}$ are partner-by-year fixed effects. The preferred triple-difference specification pools the corridor with a comparison partner group:
+\begin{equation}
+\label{eq:triple}
+\ln M_{pct} = \beta \, (\tau_p \times C_{st} \times L_c) + \phi_{pc} + \psi_{ct} + \eta_{pt} + u_{pct},
+\end{equation}
+where $L_c$ indicates the lower-regulation corridor (Morocco, Algeria, Egypt, Tunisia) and $\eta_{pt}$ are product-by-year fixed effects. A parallel specification would replace $\ln M_{pct}$ with quantity to separate volume from unit-price movements.
+
+\subsection{Variable Definitions}
+
+\paragraph{Carbon-cost exposure ($\tau_p$).}
+The CO$_2$ emission intensity of the NACE Rev.~2 sector supplying product $p$, mapped through the RAMON CN-to-NACE correspondence \citep{ramon}, fixed at its 2005--2007 average to prevent endogenous intensity responses. The transparent alternative is a binary CBAM Annex~I indicator \citep{cbam2023}.
+
+\paragraph{Effective carbon cost ($C_{st}$).}
+\begin{equation}
+\label{eq:cst}
+C_{st} = P_t \times (1 - a_{st}),
+\end{equation}
+where $P_t$ is the annual average EUA price \citep{ember} and $a_{st}$ is the sector-year free-allocation share from the EU Transaction Log \citep{eutl}. Free-allocation attenuation is part of the treatment definition: a sector with 100 per cent free allocation faces zero effective cost regardless of the EUA price. In Phases~I and~II, $a_{st}$ can exceed one; the baseline caps $a_{st}$ at one, with the uncapped version as a robustness check.
+
+\paragraph{Comparison group ($L_c = 0$).}
+The choice of comparison group determines what $\beta$ identifies. Three candidates merit consideration. Turkey participates in an EU customs union that eliminates industrial tariffs, making it difficult to separate carbon-cost effects from pre-existing preferential-access effects; Turkey has also begun developing its own emissions trading system, introducing partial regulatory convergence within the sample. The Western Balkans (Albania, Bosnia and Herzegovina, Kosovo, Montenegro, North Macedonia, Serbia) share geographic proximity, operate under Stabilisation and Association Agreements with comparable tariff schedules, and lacked carbon-pricing regimes throughout the sample period, offering a cleaner regulatory comparison; their limitation is smaller export volumes in emission-intensive goods, which introduces noise. An intra-EU sourcing benchmark would control for EU consumption shocks but faces EU~ETS regulation by construction, so it cannot serve as a lower-regulation comparator in the standard sense. The proposed design would report results with each group and discuss sensitivity to this choice.
+
+\paragraph{Fixed-effect absorption.}
+In~\eqref{eq:triple}: $\eta_{pt}$ absorbs $\tau_p \times C_{st}$, the product-level effect regardless of partner; $\psi_{ct}$ absorbs $C_{st} \times L_c$ and all partner-level macro and exchange-rate shocks; $\phi_{pc}$ absorbs $\tau_p \times L_c$. Only the triple interaction survives. Identification comes from the differential response of high-exposure products from the lower-regulation corridor, purged of global product-specific shocks and partner-specific conditions.
+
+\subsection{Sample and Data}
+
+The sample covers 2005 to 2021, spanning Phase~I through the first year of Phase~IV. Pre-2005 years (2000--2004) are reserved for pre-trend validation; the Directive dates from 2003, so 2000 to 2002 constitutes a clean pre-announcement period and 2003 to 2004 a potential anticipation window. The window ends in 2021 by design: the 2022 energy-price shock, driven by the Russian invasion of Ukraine, distorted both EUA prices and bilateral trade flows in ways unrelated to the leakage channel.
+
+Bilateral trade data at the CN8 level would come from Eurostat Comext (dataset DS-045409; \citealp{comext}), which provides value and quantity by reporting Member State, partner country, product code, and year. Comext coverage of North African partners is comprehensive for goods trade. UN Comtrade at HS6 would serve as a fallback for missing partner-product cells \citep{comtrade}; the coarser classification reduces product-level variation but ensures broader coverage. Sectoral CO$_2$ emission intensities would be computed from Eurostat air emissions accounts, defined as tonnes of CO$_2$ per unit of gross output in the corresponding NACE Rev.~2 sector, and mapped to trade products through the RAMON CN-to-NACE correspondence \citep{ramon}.
+
+\subsection{Identifying Assumptions and Threats}
+
+\begin{enumerate}
+
+\item \textbf{Parallel trends.} Absent the EU~ETS, differential trends in high-exposure imports from the corridor (relative to comparison partners) would match those for low-exposure products. An event-study specification interacting $\tau_p$ with year indicators (base 2004) would inspect 2000--2002 for pre-trends and 2003--2004 for anticipation.
+
+\item \textbf{No confounding product shocks.} Global shocks correlated with emission intensity do not differentially affect the corridor versus comparison partners. $\eta_{pt}$ absorbs all product-by-year variation; a remaining violation would require a shock simultaneously product-specific, intensity-correlated, and corridor-differential. In the baseline~\eqref{eq:baseline}, product-level commodity-price controls partially address this.
+
+\item \textbf{Carbon-price exogeneity.} The EUA price, set by EU-wide policy and macro factors, is plausibly exogenous to individual bilateral flows. $\psi_{ct}$ absorbs partner-year variation, so identification comes from within-partner-year, across-product variation.
+
+\item \textbf{No coincident trade-policy changes.} Euro-Mediterranean association agreement tariff phase-outs could confound the estimate if they coincided with EU~ETS phases and disproportionately affected emission-intensive goods. The agreements entered into force at different dates (Tunisia 1998, Morocco 2000, Egypt 2004, Algeria 2005), and industrial tariff phase-outs were largely completed before the post-2018 price acceleration. The triple-difference mitigates this insofar as comparison partners face similar preferential arrangements.
+
+\item \textbf{Over-allocation attenuation.} $a_{st}$ exceeding one in Phases~I and~II mechanically weakens the treatment. Capping $a_{st}$ at one sets $C_{st} = 0$ for over-allocated sector-years; the uncapped version serves as robustness.
+
+\item \textbf{CBAM anticipation.} The July 2021 proposal could alter 2021 trade patterns, but anticipation of a border charge deters leakage, biasing $\beta$ toward zero. The event-study specification would detect any anomalous 2021 coefficient.
+
+\end{enumerate}
+
+\subsection{Inference and Implementation}
+
+Standard errors would be clustered two-way by product and partner-year \citep{cameron2011}. The small number of partner clusters raises finite-cluster concerns; sector-level clustering and a wild cluster bootstrap would serve as alternatives. The design would be implemented with OLS and high-dimensional fixed effects (\texttt{fixest}; \citealp{berge2021}) and with PPML (\texttt{fepois}) to handle zero trade flows consistently \citep{santos2006}.
+
+\subsection{Validation}
+
+Two placebo exercises would assess specificity: estimation on non-tradable products for which the import channel is inoperative, and estimation on low-intensity products (below the 25th percentile of $\tau_p$). A positive and significant $\beta$ would be consistent with corridor-specific leakage; a precisely estimated zero would suggest free allocation has been sufficient; an imprecise zero would leave the question unresolved and motivate more disaggregated data.
