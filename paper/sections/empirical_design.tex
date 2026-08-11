@@ -57,6 +57,8 @@ Bilateral trade data at the CN8 level would come from Eurostat Comext (dataset D
 
 \item \textbf{CBAM anticipation.} The July 2021 proposal could alter 2021 trade patterns, but anticipation of a border charge deters leakage, biasing $\beta$ toward zero. The event-study specification would detect any anomalous 2021 coefficient.
 
+\item \textbf{Pandemic disruption.} The years 2020 and 2021 fall within the sample and coincide with severe trade and supply-chain disruption. $\psi_{ct}$ absorbs partner-specific pandemic severity and $\eta_{pt}$ absorbs product-specific demand collapses; a residual violation would require pandemic effects that were simultaneously corridor-specific and correlated with emission intensity. A robustness check would re-estimate the specification excluding 2020 and 2021.
+
 \end{enumerate}
 
 \subsection{Inference and Implementation}
@@ -65,4 +67,4 @@ Standard errors would be clustered two-way by product and partner-year \citep{ca
 
 \subsection{Validation}
 
-Two placebo exercises would assess specificity: estimation on non-tradable products for which the import channel is inoperative, and estimation on low-intensity products (below the 25th percentile of $\tau_p$). A positive and significant $\beta$ would be consistent with corridor-specific leakage; a precisely estimated zero would suggest free allocation has been sufficient; an imprecise zero would leave the question unresolved and motivate more disaggregated data.
+Two placebo exercises would assess specificity: estimation on non-tradable products for which the import channel is inoperative, and estimation on low-intensity products (below the 25th percentile of $\tau_p$). A heterogeneity analysis would estimate $\beta$ separately for the main CBAM product groups, whose trade exposure differs: cement's low value-to-weight ratio confines trade to short sea routes, which the Mediterranean corridor provides, whereas steel and fertilisers trade globally. Concentration of the effect in products for which corridor trade is feasible would support the leakage interpretation. A positive and significant $\beta$ would be consistent with corridor-specific leakage; a precisely estimated zero would suggest free allocation has been sufficient; an imprecise zero would leave the question unresolved and motivate more disaggregated data.
