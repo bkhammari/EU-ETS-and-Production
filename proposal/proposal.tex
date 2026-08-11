@@ -1,0 +1,117 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[british]{babel}
+\usepackage{amsmath}
+\usepackage[margin=2cm]{geometry}
+\usepackage{setspace}
+\usepackage[hidelinks]{hyperref}
+
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+\hypersetup{
+  pdftitle={Research Proposal: Carbon Leakage through the Back Door?},
+  pdfauthor={Baha Khammari}
+}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries Proposal Master's Thesis}\\[0.2cm]
+{\large\bfseries University of Cologne -- Chair of Energy Economics}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{tabular}{@{}ll@{}}
+Name: & Baha \\
+Surname: & Khammari \\
+Student ID Number: & 7364599 \\
+Course of studies: & MSc Economics \\
+Semester: & Summer Term 2026 \\
+\end{tabular}
+
+\vspace{0.6cm}
+
+\subsection*{Title}
+
+Carbon Leakage through the Back Door? The Effective EU~ETS Carbon Cost and EU Imports of Emission-Intensive Goods from North Africa
+
+\subsection*{Research Question (one sentence)}
+
+Did increases in the effective EU~ETS carbon cost, net of free allocation, raise EU imports of emission-intensive goods from the North African partners Morocco, Algeria, Egypt, and Tunisia, relative to less emission-intensive goods, over 2005 to 2021?
+
+\section{Motivation and background of the research question (max.\ 250 words)}
+
+The EU~ETS prices carbon for European producers while most trading partners price it weakly or not at all. Theory predicts that this asymmetry shifts sourcing of emission-intensive goods towards lower-regulation partners, so that foreign emissions rise and partly offset domestic abatement. The empirical record sits uneasily with this prediction: aggregate studies of European trade find no evidence of leakage (Naegele and Zaklan, 2019), and firm-level studies find emissions reductions without competitiveness losses (Colmer et al., 2025). Aggregate estimates, however, can conceal effects concentrated in particular bilateral corridors, and most samples end before the allowance price became economically meaningful after 2018.
+
+The thesis would fill this gap by estimating leakage where it is most likely to appear: the North African corridor, whose four partners combine proximity, existing cement, fertiliser, and steel capacity, preferential access under Euro-Mediterranean agreements, and no comparable carbon pricing. The question has direct policy stakes. The Carbon Border Adjustment Mechanism entered its definitive regime in January 2026, and its calibration presumes that carbon-cost differentials divert trade. A corridor-level estimate of the pre-CBAM baseline would inform this calibration and provide the empirical counterpart to simulation-based evaluations (Bellora and Fontagn\'{e}, 2023). Climate policy makers, trade economists, and researchers who measure regulatory treatment intensity would each draw on the answer. The thesis would execute the research design developed in my seminar paper, which proposes the identification strategy but deliberately stops short of estimation.
+
+\section{Methodology and Data (max.\ 250 words)}
+
+The thesis would estimate a triple-difference specification on bilateral EU import flows: the log of imports of product $p$ from partner $c$ in year $t$ regressed on the interaction of product-level carbon-cost exposure $\tau_p$, the effective carbon cost $C_{st}$, and a lower-regulation corridor indicator $L_c$, with product-by-partner, partner-by-year, and product-by-year fixed effects. The treatment is the effective cost $C_{st} = P_t \times (1 - a_{st})$, where $P_t$ is the annual EUA price and $a_{st}$ is the sector-year free-allocation share measured against fixed 2005--2007 verified emissions. Exposure $\tau_p$ is the CO$_2$ intensity of the supplying NACE Rev.~2 sector, fixed at its early-sample value.
+
+Data would come from Eurostat Comext (CN8 bilateral values and quantities, dataset DS-045409), the EU Transaction Log via the EEA data viewer (free allocation), Ember (EUA prices), and Eurostat air emissions accounts (sectoral CO$_2$ intensities), linked through the Eurostat CN-to-NACE correspondence. Estimation would use OLS with high-dimensional fixed effects and Poisson pseudo-maximum likelihood to retain zero flows. An event study over 2000 to 2004 would test for pre-trends.
+
+Four challenges are anticipated. The small number of partner clusters requires a wild cluster bootstrap. Regulated gas prices in Algeria and Egypt create an energy-cost confound, addressed with a gas-price-differential control. The allocation share is mechanically endogenous if computed against contemporaneous emissions, hence the fixed denominator. The pandemic years 2020 and 2021 require an exclusion robustness check.
+
+\section{Literature Review (max.\ 250 words)}
+
+The research question sits in the empirical literature on carbon leakage and the competitiveness effects of emissions trading. Trade-flow studies find little evidence of leakage: Naegele and Zaklan (2019) measure the EU~ETS emission cost net of free allocation in GTAP embodied-carbon flows over 2004 to 2011 and find none, while Branger et al.\ (2016) find no carbon-price effect on EU net imports of cement and steel. Aichele and Felbermayr (2015) provide the contrasting result that binding Kyoto commitment raised embodied-carbon imports from non-committed partners by 8 per cent. Firm-level evidence points the same way as the trade nulls: Colmer et al.\ (2025) find emissions reductions of 14 to 16.3 per cent for French installations with no loss of value added or employment, Dechezlepr\^{e}tre et al.\ (2023) find similar emissions effects alongside revenue gains, and Koch and Basse Mama (2019) find investment leakage confined to footloose, less capital-intensive German firms. Surveys attribute the predominance of null results to generous free allocation and low allowance prices in the periods sampled (Martin et al., 2016; Verde, 2020). Ex-ante simulations nevertheless predict substantial leakage at the higher carbon prices now prevailing (Bellora and Fontagn\'{e}, 2023).
+
+Three methodological features distinguish the proposed thesis from this literature: corridor-level rather than aggregate variation, a treatment measured net of free allocation at the sector-year level, and a sample extending through the post-2018 price acceleration that existing ex-post studies do not cover.
+
+\section{Table of Contents (including page numbers)}
+
+\begin{tabbing}
+\hspace{1.2cm} \= \hspace{12.5cm} \= \kill
+1 \> Introduction \> 1 \\
+2 \> Policy Background: the EU~ETS, Free Allocation, and the CBAM \> 4 \\
+3 \> Literature Review \> 9 \\
+4 \> Empirical Strategy \> 15 \\
+\> \hspace{0.5cm} 4.1 Specification and Identification \> 15 \\
+\> \hspace{0.5cm} 4.2 Threats and Identifying Assumptions \> 18 \\
+5 \> Data and Variable Construction \> 21 \\
+6 \> Results \> 26 \\
+7 \> Robustness and Heterogeneity \> 31 \\
+8 \> Discussion: Implications for the CBAM \> 36 \\
+9 \> Conclusion \> 39 \\
+\> References \> 41 \\
+\> Appendix: Additional Tables and Event-Study Figures \> 45 \\
+\end{tabbing}
+
+Planned length: approximately 50 pages, within the 60-page limit for a master's thesis.
+
+\section{References (max.\ 500 words)}
+
+\begin{spacing}{1.0}
+
+\textbf{Aichele, R. and Felbermayr, G. (2015):} Kyoto and Carbon Leakage: An Empirical Analysis of the Carbon Content of Bilateral Trade. In: Review of Economics and Statistics, 97(1), pp.\ 104--115.
+
+\textbf{Bellora, C. and Fontagn\'{e}, L. (2023):} EU in Search of a Carbon Border Adjustment Mechanism. In: Energy Economics, 123, 106673.
+
+\textbf{Branger, F., Quirion, P. and Chevallier, J. (2016):} Carbon Leakage and Competitiveness of Cement and Steel Industries under the EU ETS: Much Ado about Nothing. In: The Energy Journal, 37(3), pp.\ 109--136.
+
+\textbf{Colmer, J., Martin, R., Mu\^{u}ls, M. and Wagner, U.\ J. (2025):} Does Pricing Carbon Mitigate Climate Change? Firm-Level Evidence from the European Union Emissions Trading System. In: Review of Economic Studies, 92(3), pp.\ 1625--1660.
+
+\textbf{Dechezlepr\^{e}tre, A., Nachtigall, D. and Venmans, F. (2023):} The Joint Impact of the European Union Emissions Trading System on Carbon Emissions and Economic Performance. In: Journal of Environmental Economics and Management, 118, 102758.
+
+\textbf{Ellerman, A.\ D., Marcantonini, C. and Zaklan, A. (2016):} The European Union Emissions Trading System: Ten Years and Counting. In: Review of Environmental Economics and Policy, 10(1), pp.\ 89--107.
+
+\textbf{Koch, N. and Basse Mama, H. (2019):} Does the EU Emissions Trading System Induce Investment Leakage? Evidence from German Multinational Firms. In: Energy Economics, 81, pp.\ 479--492.
+
+\textbf{Martin, R., Mu\^{u}ls, M. and Wagner, U.\ J. (2016):} The Impact of the European Union Emissions Trading Scheme on Regulated Firms: What Is the Evidence after Ten Years? In: Review of Environmental Economics and Policy, 10(1), pp.\ 129--148.
+
+\textbf{Naegele, H. and Zaklan, A. (2019):} Does the EU ETS Cause Carbon Leakage in European Manufacturing? In: Journal of Environmental Economics and Management, 93, pp.\ 125--147.
+
+\textbf{Santos Silva, J.\ M.\ C. and Tenreyro, S. (2006):} The Log of Gravity. In: Review of Economics and Statistics, 88(4), pp.\ 641--658.
+
+\textbf{Verde, S.\ F. (2020):} The Impact of the EU Emissions Trading System on Competitiveness and Carbon Leakage: The Econometric Evidence. In: Journal of Economic Surveys, 34(2), pp.\ 320--343.
+
+\end{spacing}
+
+\end{document}

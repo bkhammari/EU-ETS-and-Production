@@ -22,7 +22,10 @@ Did increases in the effective EU ETS carbon cost raise EU imports of emission-i
 │       ├── empirical_design.tex
 │       ├── contribution.tex
 │       └── conclusion.tex
-└── figs/               # Reserved for institutional figures (no data)
+├── proposal/
+│   └── proposal.tex    # Research proposal (chair template layout)
+└── figs/
+    └── UoC_Logo.png    # University logo for the title page
 ```
 
 ## Compilation
