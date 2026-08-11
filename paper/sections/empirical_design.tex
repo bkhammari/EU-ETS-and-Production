@@ -1,7 +1,7 @@
 \section{Proposed Empirical Design}
 \label{sec:design}
 
-This section presents the proposed specifications, defines the treatment variables, describes the sample and data sources, and pairs each identifying assumption with the threat it answers and the specification that would probe it.
+This section presents the specifications, defines the treatment, describes the data, and pairs each identifying assumption with its threat and the specification that would probe it.
 
 \subsection{Specification}
 
@@ -10,7 +10,7 @@ The baseline continuous-treatment difference-in-differences, estimated on the No
 \label{eq:baseline}
 \ln M_{pct} = \beta \, (\tau_p \times C_{st}) + \phi_{pc} + \psi_{ct} + u_{pct},
 \end{equation}
-where $M_{pct}$ is the import value (EUR) of product $p$ from partner $c$ in year $t$; $\tau_p$ is product-level carbon-cost exposure; $C_{st}$ is the effective carbon cost; $\phi_{pc}$ are product-by-partner fixed effects; and $\psi_{ct}$ are partner-by-year fixed effects. The preferred triple-difference specification pools the corridor with a comparison partner group:
+where $M_{pct}$ is the import value (EUR) of product $p$ from partner $c$ in year $t$; $\tau_p$ is product-level carbon-cost exposure; $C_{st}$ is the effective carbon cost of the supplying sector $s = s(p)$; $\phi_{pc}$ are product-by-partner fixed effects; and $\psi_{ct}$ are partner-by-year fixed effects. The preferred triple-difference specification pools the corridor with a comparison partner group:
 \begin{equation}
 \label{eq:triple}
 \ln M_{pct} = \beta \, (\tau_p \times C_{st} \times L_c) + \phi_{pc} + \psi_{ct} + \eta_{pt} + u_{pct},
@@ -27,10 +27,10 @@ The CO$_2$ emission intensity of the sector supplying product $p$ under the Euro
 \label{eq:cst}
 C_{st} = P_t \times (1 - a_{st}),
 \end{equation}
-where $P_t$ is the annual average EUA price \citep{ember} and $a_{st}$ is the sector-year free-allocation share from the EU Transaction Log \citep{eutl}. Free-allocation attenuation is part of the treatment definition: a sector with 100 per cent free allocation faces zero effective cost regardless of the EUA price. In Phases~I and~II, $a_{st}$ can exceed one; the baseline caps $a_{st}$ at one, with the uncapped version as a robustness check.
+where $P_t$ is the annual average EUA price \citep{ember} and $a_{st}$ is the sector-year free-allocation share from the EU Transaction Log \citep{eutl}. Free-allocation attenuation is part of the treatment definition: a sector with 100 per cent free allocation faces zero effective cost regardless of the EUA price. An objection is that tradable allowances carry the full permit price as marginal opportunity cost, so lump-sum allocation would leave the output margin unaffected. EU allocation is not lump-sum in this strict sense: activity-level thresholds, closure provisions, and partial-cessation rules tie allowances to continued production, which gives free allocation genuine marginal bite \citep{ellerman2016}. A second concern is mechanical endogeneity: contemporaneous emissions enter the denominator of the allocation share, so demand shocks that cut emissions would raise $a_{st}$ by construction. The baseline therefore computes $a_{st}$ relative to fixed 2005--2007 verified emissions. In Phases~I and~II, $a_{st}$ can exceed one; the baseline caps $a_{st}$ at one. The contemporaneous share and the uncapped version are retained as robustness checks.
 
 \paragraph{Comparison group ($L_c = 0$).}
-The choice of comparison group determines what $\beta$ identifies. Three candidates merit consideration. Turkey participates in an EU customs union that eliminates industrial tariffs, so carbon-cost effects are difficult to separate from pre-existing preferential-access effects; Turkey has also begun developing its own emissions trading system, which introduces partial regulatory convergence within the sample. The Western Balkans (Albania, Bosnia and Herzegovina, Kosovo, Montenegro, North Macedonia, Serbia) share geographic proximity, operate under Stabilisation and Association Agreements with comparable tariff schedules, and lacked carbon-pricing regimes throughout the sample period, a cleaner regulatory comparison; their limitation is smaller export volumes in emission-intensive goods, which introduces noise. An intra-EU sourcing benchmark would control for EU consumption shocks but faces EU~ETS regulation by construction, so it is not a lower-regulation comparator in the standard sense. The proposed design would report results with each group and discuss sensitivity to this choice.
+The choice of comparison group determines what $\beta$ identifies. Three candidates merit consideration. Turkey participates in an EU customs union that eliminates industrial tariffs, so carbon-cost effects are difficult to separate from pre-existing preferential-access effects; Turkey has also begun developing its own emissions trading system, which introduces partial regulatory convergence towards the end of the sample period. The Western Balkans (Albania, Bosnia and Herzegovina, Kosovo, Montenegro, North Macedonia, Serbia) share geographic proximity, operate under Stabilisation and Association Agreements with comparable tariff schedules, and lacked carbon-pricing regimes throughout the sample period, a cleaner regulatory comparison; their limitation is smaller export volumes in emission-intensive goods, which introduces noise. An intra-EU sourcing benchmark would control for EU consumption shocks but faces EU~ETS regulation by construction, so it is not a lower-regulation comparator in the standard sense. The proposed design would report results with each group and discuss sensitivity to this choice.
 
 \paragraph{Fixed-effect absorption.}
 In Equation~\ref{eq:triple}, $\eta_{pt}$ absorbs $\tau_p \times C_{st}$, the product-level effect regardless of partner; $\psi_{ct}$ absorbs $C_{st} \times L_c$ and all partner-level macro and exchange-rate shocks; $\phi_{pc}$ absorbs $\tau_p \times L_c$. Only the triple interaction survives. Identification comes from the differential response of high-exposure products from the lower-regulation corridor, purged of global product-specific shocks and partner-specific conditions.
@@ -58,6 +58,8 @@ Bilateral trade data at the CN8 level would come from Eurostat Comext (dataset D
 \item \emph{CBAM anticipation.} The July 2021 proposal could alter 2021 trade patterns, but anticipation of a border charge deters leakage and biases $\beta$ toward zero. The event-study specification would detect any anomalous 2021 coefficient.
 
 \item \emph{Pandemic disruption.} The years 2020 and 2021 fall within the sample and coincide with severe trade and supply-chain disruption. $\psi_{ct}$ absorbs partner-specific pandemic severity and $\eta_{pt}$ absorbs product-specific demand collapses; a residual violation would require pandemic effects that were simultaneously corridor-specific and correlated with emission intensity. A robustness check would re-estimate the specification excluding 2020 and 2021.
+
+\item \emph{Corridor-specific energy costs.} Algeria and Egypt produce natural gas and regulate domestic energy prices, so the corridor's cost advantage in gas-intensive products widens when European gas prices rise; European gas prices in turn co-move with the EUA price, most strongly after 2018. This confound is corridor-specific, intensity-correlated, and time-varying, so no fixed effect in Equation~\ref{eq:triple} absorbs it. The specification would add a control interacting $\tau_p \times L_c$ with the EU--partner gas-price differential; without this control, $\beta$ would bundle the carbon-cost asymmetry with the energy-cost asymmetry.
 
 \end{enumerate}
 
