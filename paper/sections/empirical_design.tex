@@ -97,7 +97,9 @@ Bilateral trade data at the CN8 level would come from Eurostat Comext (dataset D
 
 \end{enumerate}
 
-\subsection{Inference and Implementation}
+\subsection{Estimation, Inference, and Implementation}
+
+The continuous treatment requires care beyond the choice of estimator. Under heterogeneous treatment effects, two-way fixed-effects estimators weight the underlying comparisons in ways that need not be convex, so the estimated coefficient can differ in sign from every unit-level effect \citep{dechaisemartin2020}. A continuous dose compounds this: identification requires a parallel-trends condition holding at every level of treatment intensity rather than only between treated and untreated units, and the resulting estimand is a weighted average of dose-specific responses whose weights depend on the distribution of doses \citep{callaway2024}. The design would therefore report the distribution of $\tau_p \times C_{st}$ across sector-years, estimate dose-specific responses in place of a single slope where cell counts permit, and apply current diagnostics for negative weighting \citep{baker2026}.
 
 Standard errors would be clustered two-way by product and partner-year \citep{cameron2011}. The small number of partner clusters raises finite-cluster concerns; sector-level clustering and a wild cluster bootstrap would address this. The design would be implemented with ordinary least squares (OLS) and high-dimensional fixed effects (\texttt{fixest}; \citealp{berge2021}) and with Poisson pseudo-maximum-likelihood (PPML) estimation (\texttt{fepois}) to handle zero trade flows consistently \citep{santos2006}.
 
