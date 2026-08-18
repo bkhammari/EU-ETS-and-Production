@@ -25,8 +25,25 @@ Did increases in the effective EU ETS carbon cost raise EU imports of emission-i
 ├── proposal/
 │   └── proposal.tex    # Research proposal (chair template layout)
 └── figs/
-    └── UoC_Logo.png    # University logo for the title page
+    ├── UoC_Logo.png    # University logo for the title page
+    └── make_figs.R     # EUA price figure (needs an Ember CSV; see below)
 ```
+
+## Optional price figure
+
+`figs/make_figs.R` draws the EUA price series with the proposed sample window
+marked. It is the only part of the repository that reads external data, and it
+performs no estimation. Download the CSV export from
+<https://ember-energy.org/data/carbon-price-viewer/> into `figs/`, then:
+
+```bash
+cd figs
+Rscript make_figs.R
+```
+
+This writes `figs/eua_price.pdf`. The paper picks the file up automatically on
+the next compile and omits the figure entirely if it is absent, so `paper/`
+compiles either way.
 
 ## Compilation
 
