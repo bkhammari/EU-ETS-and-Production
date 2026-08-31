@@ -5,7 +5,7 @@ The empirical literature on EU~ETS carbon leakage divides by mechanism: trade-fl
 
 \subsection{Trade-Flow Evidence}
 
-\citet{naegele2019} provide the most direct test of trade-flow leakage. They compute trade flows in embodied carbon and in value from Global Trade Analysis Project (GTAP) trade and input-output data over 2004 to 2011, and measure regulatory stringency as the emission cost the EU~ETS imposes on each sector, combining direct and electricity-related indirect costs net of freely allocated allowances. Estimating net-flow specifications with sector-by-country and year fixed effects, alongside bilateral specifications in the spirit of gravity models, they find no evidence that the EU~ETS has caused carbon leakage in European manufacturing. The design's strength lies in its administrative treatment measure and comprehensive sector coverage. Its limitation is aggregation: by pooling all partners and products, it cannot detect leakage concentrated in specific corridors. A separate concern is the sample period, which ends in 2011 and therefore excludes the post-2018 price acceleration.
+\citet{naegele2019} provide the most direct test of trade-flow leakage. They compute trade flows in embodied carbon and in value from Global Trade Analysis Project (GTAP) trade and input-output data over 2004 to 2011, and measure regulatory stringency as the emission cost the EU~ETS imposes on each sector, combining direct and electricity-related indirect costs net of freely allocated allowances. Estimating net-flow specifications with sector-by-country and year fixed effects, alongside bilateral specifications in the spirit of gravity models, they find no evidence that the EU~ETS has caused carbon leakage in European manufacturing. The design's strength lies in its administrative treatment measure and comprehensive sector coverage. Its limitation is that stringency is never interacted with partner regulatory status, so leakage concentrated in a specific corridor is not tested. A separate concern is the sample period, which ends in 2011 and therefore excludes the post-2018 price acceleration.
 
 \citet{aichele2015} estimate the carbon content of bilateral trade among 40~countries over 1995 to 2007, exploiting binding Kyoto commitment as policy variation within a theory-consistent gravity framework. They find that commitment raised a committed country's embodied carbon imports from non-committed partners by approximately 8 per cent and the emission intensity of its imports by roughly 3 per cent, though the binary indicator does not capture carbon-pricing intensity and the sample predates the post-2018 price increase.
 
@@ -31,7 +31,7 @@ Two features common to the samples fit the pattern better. The first is the trea
 
 \subsection{The Gap}
 
-Three features motivate the proposed design. Trade-flow studies pool all EU trading partners, so corridor-specific leakage is averaged away. Most samples end before the EUA price exceeded EUR~25 on a sustained basis, leaving the MSR-driven acceleration from 2018 onward largely unexamined. And free allocation attenuates the treatment itself. \citet{naegele2019} net it out of their stringency measure, but the firm-level literature treats allocation as a robustness dimension rather than a component of the treatment, so a near-zero effective treatment is read as an inelastic response to a real one.
+Three features motivate the proposed design. Trade-flow studies do not interact stringency with partner regulatory status, so corridor-specific leakage is averaged away. Most samples end before the EUA price exceeded EUR~25 on a sustained basis, leaving the MSR-driven acceleration from 2018 onward largely unexamined. And free allocation attenuates the treatment itself. \citet{naegele2019} net it out of their stringency measure, but the firm-level literature treats allocation as a robustness dimension rather than a component of the treatment, so a near-zero effective treatment is read as an inelastic response to a real one.
 
 \begin{table}[htbp]
 \centering
@@ -43,7 +43,7 @@ Three features motivate the proposed design. Trade-flow studies pool all EU trad
 \toprule
 Author(s)/Year & Data & Identification & Main Finding & Limitation \\
 \midrule
-\citet{naegele2019} & Embodied-carbon trade flows, GTAP data, 2004--2011 & Net-flow and bilateral regressions using the EU~ETS emission cost net of free allocation & No evidence of trade-flow leakage & Aggregation across partners and products, sample ends 2011 \\
+\citet{naegele2019} & Embodied-carbon trade flows, GTAP data, 2004--2011 & Net-flow and bilateral regressions using the EU~ETS emission cost net of free allocation & No evidence of trade-flow leakage & Stringency never interacted with partner regulatory status, sample ends 2011 \\
 \addlinespace
 \citet{aichele2015} & Carbon content of bilateral trade, 40 countries, 1995--2007 & Kyoto commitment in a theory-consistent gravity framework & 8\% higher embodied-carbon imports from non-committed partners & Binary policy indicator, predates the EU~ETS price acceleration \\
 \addlinespace
