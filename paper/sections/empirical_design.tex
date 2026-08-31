@@ -13,7 +13,7 @@ The baseline continuous-treatment difference-in-differences, estimated on the No
 where $M_{pct}$ is the import value (EUR) of product $p$ from partner $c$ in year $t$; $\tau_p$ is product-level carbon-cost exposure; $C_{st}$ is the effective carbon cost of the supplying sector $s = s(p)$; $\phi_{pc}$ are product-by-partner fixed effects; and $\psi_{ct}$ are partner-by-year fixed effects. The preferred triple-difference specification pools the corridor with a comparison partner group:
 \begin{equation}
 \label{eq:triple}
-\ln M_{pct} = \beta \, (\tau_p \times C_{st} \times L_c) + \phi_{pc} + \psi_{ct} + \eta_{pt} + u_{pct},
+\ln M_{pct} = \beta \, (\tau_p \times C_{st} \times L_c) + \gamma \, (C_{st} \times L_c) + \phi_{pc} + \psi_{ct} + \eta_{pt} + u_{pct},
 \end{equation}
 where $L_c$ indicates the lower-regulation corridor (Morocco, Algeria, Egypt, Tunisia) and $\eta_{pt}$ are product-by-year fixed effects. A parallel specification would replace $\ln M_{pct}$ with quantity to separate volume from unit-price movements.
 
@@ -33,7 +33,7 @@ where $P_t$ is the annual average EUA price \citep{eeaprice} and $a_{st}$ is the
 The choice of comparison group determines what $\beta$ identifies. Three candidates merit consideration. Turkey participates in an EU customs union covering industrial products \citep{customs1995}, so carbon-cost effects are difficult to separate from pre-existing preferential-access effects. Turkey priced no carbon within the sample period and operated only an installation-level monitoring and reporting system from 2015 \citep{icap2026}. The Western Balkans (Albania, Bosnia and Herzegovina, Kosovo, Montenegro, North Macedonia, Serbia) share geographic proximity, operate under Stabilisation and Association Agreements with comparable tariff schedules, and lacked carbon-pricing regimes throughout the sample period \citep{worldbank2026}, a cleaner regulatory comparison. Their limitation is smaller export volumes in emission-intensive goods, which introduces noise. An intra-EU sourcing benchmark would control for EU consumption shocks but faces EU~ETS regulation by construction, so it is not a lower-regulation comparator in the standard sense. The proposed design would report results with each group and discuss sensitivity to this choice.
 
 \paragraph{Fixed-effect absorption.}
-In Equation~\ref{eq:triple}, $\eta_{pt}$ absorbs $\tau_p \times C_{st}$, the product-level effect regardless of partner; $\psi_{ct}$ absorbs $C_{st} \times L_c$ and all partner-level macro and exchange-rate shocks; $\phi_{pc}$ absorbs $\tau_p \times L_c$. Only the triple interaction survives (c.f.\ Figure~\ref{fig:absorption}). Identification comes from the differential response of high-exposure products from the lower-regulation corridor, purged of global product-specific shocks and partner-specific conditions.
+In Equation~\ref{eq:triple}, $\eta_{pt}$ absorbs $\tau_p \times C_{st}$ and $\phi_{pc}$ absorbs $\tau_p \times L_c$. The third two-way term is not absorbed. Since $C_{st}$ varies across sectors within a partner-year cell, which $\psi_{ct}$ holds fixed, $C_{st} \times L_c$ survives the fixed effects and must enter explicitly as $\gamma$ (cf.\ Figure~\ref{fig:absorption}). Both $\tau_p$ and $C_{st}$ are defined at sector level, so treatment varies by sector, year, and corridor status, and the CN8 disaggregation constructs the outcome and permits $\eta_{pt}$ rather than adding treatment variation. Because $\tau_p$ is time-invariant, $\beta$ is separated from $\gamma$ only under the assumption that the corridor's differential response is linear in emission intensity.
 
 \begin{figure}[htbp]
 \centering
@@ -43,7 +43,9 @@ In Equation~\ref{eq:triple}, $\eta_{pt}$ absorbs $\tau_p \times C_{st}$, the pro
   absorbed/.style={draw, gray, fill=gray!8, text=gray!50!black, rounded corners=2pt,
                    minimum width=3.3cm, minimum height=0.9cm, align=center},
   survives/.style={draw, very thick, blue!60!black, rounded corners=2pt,
-                   minimum width=6cm, minimum height=1cm, align=center}
+                   minimum width=6cm, minimum height=1cm, align=center},
+  controlled/.style={draw, dashed, black!70, rounded corners=2pt,
+                   minimum width=3.3cm, minimum height=0.9cm, align=center}
 ]
 
 \node[margin] (a) at (0,0)   {Product exposure\\[1pt] $\tau_p$};
@@ -51,11 +53,11 @@ In Equation~\ref{eq:triple}, $\eta_{pt}$ absorbs $\tau_p \times C_{st}$, the pro
 \node[margin] (c) at (7.6,0) {Lower-regulation\\[1pt] corridor $L_c$};
 
 \node[absorbed] (ab) at (0,-2)   {$\tau_p \times C_{st}$};
-\node[absorbed] (bc) at (3.8,-2) {$C_{st} \times L_c$};
+\node[controlled] (bc) at (3.8,-2) {$C_{st} \times L_c$};
 \node[absorbed] (ac) at (7.6,-2) {$\tau_p \times L_c$};
 
 \node[gray!50!black, font=\scriptsize] at (0,-2.8)   {absorbed by $\eta_{pt}$};
-\node[gray!50!black, font=\scriptsize] at (3.8,-2.8) {absorbed by $\psi_{ct}$};
+\node[black!70, font=\scriptsize] at (3.8,-2.8) {not absorbed: control $\gamma$};
 \node[gray!50!black, font=\scriptsize] at (7.6,-2.8) {absorbed by $\phi_{pc}$};
 
 \draw[->, thick, blue!60!black] (3.8,-3.2) -- (3.8,-3.75);
@@ -64,7 +66,7 @@ In Equation~\ref{eq:triple}, $\eta_{pt}$ absorbs $\tau_p \times C_{st}$, the pro
 \node[blue!60!black, font=\scriptsize] at (3.8,-5.1) {identifying variation};
 
 \end{tikzpicture}
-\caption[Absorption of lower-order interactions in the triple difference]{Absorption of lower-order interactions in the triple difference. Each two-way interaction is absorbed by one set of fixed effects in Equation~\ref{eq:triple}, leaving the three-way interaction as the only surviving source of identifying variation.\\
+\caption[Absorption of lower-order interactions in the triple difference]{Absorption of lower-order interactions in the triple difference. Two of the three two-way interactions are absorbed by fixed effects in Equation~\ref{eq:triple}. The third varies across sectors within a partner-year cell and is therefore not absorbed, entering instead as the explicit control $\gamma$.\\
 \textit{Source:} Own illustration.}
 \label{fig:absorption}
 \end{figure}
@@ -79,11 +81,11 @@ Bilateral trade data at the CN8 level would come from Eurostat Comext (dataset D
 
 \begin{enumerate}
 
-\item \emph{Parallel trends.} Absent the EU~ETS, differential trends in high-exposure imports from the corridor (relative to comparison partners) would match those for low-exposure products. An event-study specification interacting $\tau_p$ with year indicators (base 2004) would inspect 2000--2002 for pre-trends and 2003--2004 for anticipation.
+\item \emph{Parallel trends.} Absent the EU~ETS, differential trends in high-exposure imports from the corridor (relative to comparison partners) would match those for low-exposure products. An event-study specification interacting $\tau_p \times L_c$ with year indicators (base 2004) would inspect 2000--2002 for pre-trends and 2003--2004 for anticipation.
 
 \item \emph{No confounding product shocks.} Global shocks correlated with emission intensity do not differentially affect the corridor versus comparison partners. $\eta_{pt}$ absorbs all product-by-year variation. A remaining violation would require a shock simultaneously product-specific, intensity-correlated, and corridor-differential. In the baseline Equation~\ref{eq:baseline}, product-level commodity-price controls partially address this.
 
-\item \emph{Carbon-price exogeneity.} The EUA price, set by EU-wide policy and macro factors, is plausibly exogenous to individual bilateral flows. $\psi_{ct}$ absorbs partner-year variation, so identification comes from within-partner-year, across-product variation.
+\item \emph{Carbon-price exogeneity.} The EUA price, set by EU-wide policy and macro factors, is plausibly exogenous to individual bilateral flows. $\psi_{ct}$ absorbs partner-year variation, so identification comes from within-partner-year, across-sector variation.
 
 \item \emph{No coincident trade-policy changes.} Euro-Mediterranean association agreement tariff phase-outs could confound the estimate if they coincided with EU~ETS phases and disproportionately affected emission-intensive goods. The agreements entered into force at different dates (Tunisia 1998, Morocco 2000, Egypt 2004, Algeria 2005; \citealp{eumed}), and industrial tariff phase-outs were largely completed before the post-2018 price acceleration. The triple-difference mitigates this insofar as comparison partners face similar preferential arrangements.
 
@@ -101,11 +103,11 @@ Bilateral trade data at the CN8 level would come from Eurostat Comext (dataset D
 
 The continuous treatment requires care beyond the choice of estimator. Under heterogeneous treatment effects, two-way fixed-effects estimators weight the underlying comparisons in ways that need not be convex, so the estimated coefficient can differ in sign from every unit-level effect \citep{dechaisemartin2020}. A continuous dose compounds this: identification requires a parallel-trends condition holding at every level of treatment intensity rather than only between treated and untreated units, and the resulting estimand is a weighted average of dose-specific responses whose weights depend on the distribution of doses \citep{callaway2024}. The design would therefore report the distribution of $\tau_p \times C_{st}$ across sector-years, estimate dose-specific responses in place of a single slope where cell counts permit, and apply current diagnostics for negative weighting \citep{baker2026}.
 
-Standard errors would be clustered two-way by product and partner-year \citep{cameron2011}. With four corridor partners and six comparison partners, the effective number of clusters is ten, below the range in which cluster-robust asymptotics are reliable.\footnote{At this number the asymptotic variance understates true sampling variability, so the bootstrap rather than the cluster-robust estimator carries the inference.} Sector-level clustering and a wild cluster bootstrap would address this. The design would be implemented with ordinary least squares (OLS) and high-dimensional fixed effects (\texttt{fixest}; \citealp{berge2021}) and with Poisson pseudo-maximum-likelihood (PPML) estimation (\texttt{fepois}) to handle zero trade flows consistently \citep{santos2006}.
+Standard errors would be clustered by sector, the level at which the treatment varies, since clustering on product would treat mechanically identical CN8 treatment values as independent \citep{cameron2011}. The partner dimension is the binding constraint: four corridor and six comparison partners give ten partner clusters, below the range in which cluster-robust asymptotics are reliable.\footnote{At this number the asymptotic variance understates true sampling variability, so a wild cluster bootstrap on partner clusters, rather than the cluster-robust estimator, would carry the inference.} The design would be implemented with ordinary least squares (OLS) and high-dimensional fixed effects (\texttt{fixest}; \citealp{berge2021}) and with Poisson pseudo-maximum-likelihood (PPML) estimation (\texttt{fepois}) to handle zero trade flows consistently \citep{santos2006}.
 
 \subsection{Validation}
 
-Two placebo exercises would assess specificity: estimation on non-tradable products for which the import channel is inoperative, and estimation on low-intensity products (below the 25th percentile of $\tau_p$). A heterogeneity analysis would estimate $\beta$ separately for the main CBAM product groups, whose trade exposure differs: cement's low value-to-weight ratio confines trade to short sea routes, which the Mediterranean corridor provides, whereas steel and fertilisers trade globally \citep{branger2016}. Concentration of the effect in products for which corridor trade is feasible would support the leakage interpretation. A positive $\beta$ would not by itself separate corridor-specific leakage from trade diversion, because output previously sold in third markets could be re-routed to the EU with no expansion of corridor production and no displacement of EU output. The two cases differ in the behaviour of total corridor exports. Leakage implies that exports rise across all destinations, whereas diversion implies flat totals with a rising EU share. Corridor exports to non-EU destinations, available at HS6 from UN Comtrade \citep{comtrade}, would discriminate between them, and the placebo exercises above would not.
+A timing placebo would assess specificity. Assigning the EUA price path a counterfactual four-year lead should collapse $\beta$, whereas a confound co-moving with the corridor would survive it. A placebo on low-intensity products would not discriminate, since the treatment is near zero there by construction. A heterogeneity analysis would estimate $\beta$ separately for the main CBAM product groups, whose trade exposure differs: cement's low value-to-weight ratio confines trade to short sea routes, which the Mediterranean corridor provides, whereas steel and fertilisers trade globally \citep{branger2016}. A positive $\beta$ would not by itself separate corridor-specific leakage from trade diversion, defined here as re-routing of existing output rather than new production. Leakage implies exports rise across all destinations, whereas diversion implies flat totals with a rising EU share. Corridor exports to non-EU destinations, available at HS6 from UN Comtrade \citep{comtrade}, would discriminate between them.
 
 Interpretation needs a scale, not only a sign. The design would convert $\beta$ into the implied change in embodied carbon imported through the corridor and express it as a share of the EU~ETS emissions reduction estimated for regulated firms, so that a statistically precise estimate can still be judged economically small.
 
